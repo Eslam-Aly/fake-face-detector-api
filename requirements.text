@@ -1,1 +1,7 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pillow
+numpy
+tensorflow
 huggingface_hub

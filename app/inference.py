@@ -6,7 +6,6 @@ MODEL_DIR = ensure_model_dir()
 model = tf.keras.models.load_model(MODEL_DIR)
 
 def predict_image(batch: np.ndarray) -> dict:
-    # Your training setup: sigmoid output gives P(real)
     p_real = float(model(batch, training=False).numpy()[0][0])
     p_fake = 1.0 - p_real
 
