@@ -1,0 +1,11 @@
+.venv
+__pycache__
+*.pyc
+.git
+.gitignore
+.env
+
+# Hugging Face model cache / local downloads
+models_cache
+models
+fake_face_model
