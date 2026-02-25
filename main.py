@@ -107,11 +107,13 @@ def predict_fake_face(image: Image.Image) -> PredictionResponse:
 
     label = "REAL" if prob_real >= 0.5 else "FAKE"
     confidence = prob_real if prob_real >= 0.5 else (1 - prob_real)
+    confidence_percent = confidence * 100
+    probability_real_percent = prob_real * 100
 
     return PredictionResponse(
         label=label,
-        confidence=round(confidence, 6),
-        probability_real=round(prob_real, 6),
+        confidence=round(confidence_percent, 2),
+        probability_real=round(probability_real_percent, 2),
     )
 
 
