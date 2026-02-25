@@ -1,5 +1,5 @@
 ---
-title: Fake Face Api
+title: Fake Face Detector Api
 emoji: 👁
 colorFrom: blue
 colorTo: green
