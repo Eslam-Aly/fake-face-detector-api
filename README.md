@@ -1,3 +1,13 @@
+---
+title: Fake Face Api
+emoji: 👁
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+license: apache-2.0
+---
+
 # Fake Face Detection FastAPI
 
 Standalone FastAPI service to expose your fake-face model for a JavaScript client.
