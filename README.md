@@ -135,4 +135,4 @@ After deploy, your endpoint will be:
 
 Live example:
 
-- `POST https://eslamaly-fake-face-api.hf.space/predict`
+- `POST https://eslamaly-fake-face-detector-api.hf.space/predict`
