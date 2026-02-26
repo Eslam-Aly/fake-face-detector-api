@@ -12,6 +12,12 @@ license: apache-2.0
 
 Standalone FastAPI service to expose your fake-face model for a JavaScript client.
 
+## Research basis
+
+This project is part of, and based on, the research paper published on Sciforum:
+
+- https://sciforum.net/paper/view/27925
+
 ## 1) Install
 
 ```bash
