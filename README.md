@@ -65,7 +65,7 @@ export HF_TOKEN="hf_xxx"
 ## 3) Run API
 
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn --env-file .env main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### CORS configuration (recommended)
@@ -78,6 +78,12 @@ export CORS_ALLOW_CREDENTIALS="false"
 ```
 
 For production, set `CORS_ALLOW_ORIGINS` to your deployed client URL(s), comma-separated.
+
+Example production value:
+
+```bash
+export CORS_ALLOW_ORIGINS="https://<your-vercel-domain>"
+```
 
 ## 4) Endpoints
 
@@ -138,6 +144,10 @@ docker run --rm -p 7860:7860 \
 3. In Space Settings -> Variables and secrets:
    - Variable: `HF_MODEL_REPO` = `eslamaly/fake-face-xception-model`
    - Secret (if private): `HF_TOKEN` = `hf_xxx`
+
+- Variable: `CORS_ALLOW_ORIGINS` = `https://<your-vercel-domain>`
+- Variable: `CORS_ALLOW_CREDENTIALS` = `false`
+
 4. Hugging Face will build and run the container automatically on port `7860`.
 
 After deploy, your endpoint will be:
