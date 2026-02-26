@@ -26,6 +26,13 @@ class PredictionResponse(BaseModel):
     probability_real: float
 
 
+def _parse_cors_allow_origins() -> list[str]:
+    raw = os.getenv("CORS_ALLOW_ORIGINS", "*").strip()
+    if not raw:
+        return ["*"]
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
+
 def _resolve_model_path() -> tuple[Path, str]:
     model_dir = os.getenv("FFD_MODEL_DIR")
     if model_dir:
@@ -69,10 +76,20 @@ else:
 
 app = FastAPI(title="Fake Face Detection API", version="1.0.0")
 
+cors_allow_origins = _parse_cors_allow_origins()
+cors_allow_credentials = os.getenv("CORS_ALLOW_CREDENTIALS", "false").lower() in {
+    "1",
+    "true",
+    "yes",
+}
+
+if "*" in cors_allow_origins and cors_allow_credentials:
+    raise RuntimeError("CORS_ALLOW_CREDENTIALS=true requires explicit CORS_ALLOW_ORIGINS values.")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_allow_origins,
+    allow_credentials=cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )

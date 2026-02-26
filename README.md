@@ -68,6 +68,17 @@ export HF_TOKEN="hf_xxx"
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+### CORS configuration (recommended)
+
+For local frontend on Vite:
+
+```bash
+export CORS_ALLOW_ORIGINS="http://localhost:5173"
+export CORS_ALLOW_CREDENTIALS="false"
+```
+
+For production, set `CORS_ALLOW_ORIGINS` to your deployed client URL(s), comma-separated.
+
 ## 4) Endpoints
 
 - `GET /health`
